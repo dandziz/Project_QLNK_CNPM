@@ -1,0 +1,32 @@
+/* CSS for index */
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+#body-index{
+    background-image: url(../images/background/bg-banner.png); 
+    background-color: #1C8233;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position:center;
+}
+.text-title{
+    font-family: "Lora";
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.body-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+}
+.nav-features:hover{
+    background-color: rgba(255,255,255, 0.8);
+}
