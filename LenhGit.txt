@@ -1,0 +1,12 @@
+git init
+
+git add .
+
+git commit -m'Tên commit nhập zô'
+
+git remote add origin https://github.com/05-1951060584-DaoDuyDan/Project_QLNK_CNPM.git
+
+git branch TenBan
+git checkout TenBan
+
+git push --set-upstream origin TenBan

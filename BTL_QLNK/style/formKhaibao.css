@@ -1,0 +1,25 @@
+.form-control:hover {
+    border-color: #1dbfaf;
+}
+
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.0rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.line-space {
+    border: 2px solid #190685;
+}
+
+.icon-required {
+    color: red;
+}
