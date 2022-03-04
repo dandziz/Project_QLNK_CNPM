@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../BTL/style/style.css">
+    <link rel="stylesheet" href="../../BTL_QLNK/style/style.css">
 </head>
 
 <body>
-    <header style="background-color: #1C8233;">
+    <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
                 <div class="container-fluid">
@@ -27,12 +27,12 @@
                             <?php
                             if(!isset($_SESSION['LoginOK'])){
                             ?>
-                            <a href="login.php"><button class="btn btn-outline-success" type="button">Đăng nhập</button></a>
+                            <a href="../../login.php"><button class="btn btn-outline-success" type="button">Đăng nhập</button></a>
                             <?php
                             }else{
                             ?>
-                            <a href="manage/index.php"><button class="btn btn-outline-success me-2" type="button">Quản Lý</button></a>
-                            <a href="logout.php"><button class="btn btn-outline-success" type="button">Đăng xuất</button></a>
+                            <a href="index.php"><button class="btn btn-outline-success me-2" type="button">Quản Lý</button></a>
+                            <a href="../../BTL/logout.php"><button class="btn btn-outline-success" type="button">Đăng xuất</button></a>
                             <?php
                             }
                             ?>

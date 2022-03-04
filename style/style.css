@@ -30,3 +30,12 @@ h1,h2,h3,h4,h5,h6{
 .nav-features:hover{
     background-color: rgba(255,255,255, 0.8);
 }
+
+#sidebar-info{
+    position: fixed;
+}
+@media (max-width: 750.0px) {
+#sidebar-info{
+    position: static;
+}
+}
