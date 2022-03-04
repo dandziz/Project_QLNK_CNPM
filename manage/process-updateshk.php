@@ -1,6 +1,6 @@
 <?php
-require "config/config.php";
-if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') {
+require "../config/config.php";
+if (!isset($_SESSION['LoginOK'])) {
     header('location: ../index.php');
 } else {
     if(isset($_POST['smUpdateshk'])){
@@ -22,7 +22,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         $dbh = new PDO("mysql:host=localhost;dbname=db_qlnk", "root", "");
         $stmt = $dbh->prepare("UPDATE `tb_chitietshk` SET hoten = ?, hotenkhac = ?, quanhech = ?, 
         ngaysinh = ?, gioitinh = ?, nguyenquan = ?, dantoc = ?, tongiao = ?, quoctich = ?
-        , nghenghiepnoilamviec = ?, noithuongtrutruocday = ?, ma_chucvu = ?, ma_chucvu = ? where `cccd` = ?");
+        , nghenghiepnoilamviec = ?, noithuongtrutruocday = ?, canbodangky = ?, truongcongan = ? where `cccd` = ? ");
         $stmt->bindParam(1, $hoten);
         $stmt->bindParam(2, $hotenkhac);
         $stmt->bindParam(3, $quanhech);
@@ -40,7 +40,7 @@ if (!isset($_SESSION['LoginOK']) && !substr($_SESSION['LoginOK'], 0, 1) == '1') 
         if($stmt->execute()){
             header("location: process-shk.php?cccd={$cccd}");
         }else{
-            header("location: skinfomation.php");
+            header("location: shkmanage.php");
         }
     }else{
         header("location: process-shk.php");

@@ -5,63 +5,21 @@ require('partials-front/header.php');
 require_once "../classprocessSQL.php";
 require_once "../process-string.php";
 $ps = new Process();
-if (isset($_SESSION['LoginOK'])) {
+if (!isset($_SESSION['LoginOK'])) {
     header('location: ../index.php');
 } else {
-    if (isset($_POST['btnaddshk'])) {
-        require('partials-front/header.php');
-        $sqlstatusshk = "Select* from tb_chitietshk where  tb_chitietshk.ma_shk = '{$ma_shk}'";
-        $resultstatusshk =  mysqli_query($conn, $sqlstatusshk);
-        if (mysqli_num_rows($resultstatusshk) > 0) {
-            $row = mysqli_fetch_assoc($resultstatusshk);
-        }
-        $cccd = $_POST['cccd'];
-        $canbodangky = $_POST['canbodangky'];
-        $truongcongan = $_POST['truongcongan'];
-        $hoten = $_POST['hoten'];
-        $hotenkhac = $_POST['hotenkhac'];
-        $quanhech = $_POST['quanhech'];
-        $ngaysinh = $_POST['ngaysinh'];
-        $gioitinh = $_POST['gioitinh'];
-        $nguyenquan = $_POST['nguyenquan'];
-        $dantoc = $_POST['dantoc'];
-        $tongiao = $_POST['tongiao'];
-        $quoctich = $_POST['quoctich'];
-        $nghenghiepnoilamviec = $_POST['nghenghiepnoilamviec'];
-        $noithuongtrutruocday = $_POST['noithuongtrutruocday'];
-        $sqladdshk = "Insert into tb_chitietshk Values('{$cccd}','{$hoten}',{$hotenkhac},{$quanhech}, '{$ngaysinh}', {$gioitinh} ,'{$nguyenquan}','{$dantoc}','{$tongiao}', '{$quoctich}','{$nghenghiepnoilamviec}',
-        '{$noithuongtrutruocday}'0, 0, {$_POST['canbodangky']}, {$row['ma_chucvu']})";
-        if (mysqli_query($conn, $sqladdshk)) {
-            header("location: index.php");
-        } else {
-            header("location: index.php");
-        }
-
-        $sqlstatusshk = "Select* from tb_chitietshk, tb_nguoidung where tb_nguoidung.taikhoan = '{$taikhoan}' and ma_shk = '{$ma_shk}'";
-        $resultstatusshk =  mysqli_query($conn, $sqlstatusshk);
-        if (mysqli_num_rows($resultstatusshk) > 0) {
-            $row = mysqli_fetch_assoc($resultstatusshk);
-        }
-    
-    } else if (isset($_POST['themthongtinshk']) && $ps->checkshk($_POST['themthongtinshk']) || isset($_GET['ma_shk']) && $ps->checkshk($_GET['ma_shk'])) {
-        if (isset($_POST['themthongtinshk'])) {
-            $ma_shk = $_POST['ma_shk_update'];
-        } else {
-            $ma_shk = $_GET['ma_shk'];
-        }
-        $sqlinfoshk = "Select* from tb_chitietshk where ma_shk = '{$ma_shk}' ";
-        $resultinfoshk =  mysqli_query($conn, $sqlinfoshk);
-        $rowinfoshk = mysqli_fetch_assoc($resultinfoshk);
-    } else {
-        header("location: index.php");
-    }
+    if(isset($_GET['cccd'])){
+        $cccd = $_GET['cccd'];
+        $sql = "Select* from tb_chitietshk where cccd = '$cccd'";
+        $result = mysqli_query($conn, $sql);
+        $rowinfoshk = mysqli_fetch_assoc($result);
 ?>
     <head>
         <title>Quản lý thành viên</title>
     </head>
     <div class="container" style="margin-top: 72px;">
         <div class="mt-2 mb-2">
-            <a href="shkinfomatinon.php" class="text-decoration-none d-flex align-items-center"><span class="material-icons">
+            <a href="shkmanage.php" class="text-decoration-none d-flex align-items-center"><span class="material-icons">
                     arrow_back
                 </span> <span>Quay lại</span> </a>
         </div>
@@ -82,7 +40,7 @@ if (isset($_SESSION['LoginOK'])) {
                 <!-- Chỉnh sửa  -->
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
-                        <form action="process-updateshk.php" method="POST" class="form-control mt-3" accept-charset="utf-8" onsubmit="return accept()">
+                        <form action="process-updateshk.php" method="POST" class="form-control mt-3" >
                             <div class="d-flex flex-row align-items-center justify-content-between">
                                 <span class="me-2 fw-bold fs-1">Mã số cccd của bạn: </span>
                                 <input class="form-control mt-2" name="cccdupdate" value="<?php echo $cccd; ?>" style="max-width: 150px;" readonly>
@@ -92,62 +50,91 @@ if (isset($_SESSION['LoginOK'])) {
                                 <div class="displayblockshk">
                                     <div class="col-md me-1 mt-3">
                                         <label for="exampleInputEmail1" class="form-label fw-bold">Cán bộ đăng ký</label>
-                                        <input type="text" class="form-control" id="canbodangkynotupdate" value="<?php echo $rowinfoshk['canbodangky'] ?>" aria-describedby="emailHelp" name="chucvunotupdate" required readonly>
+                                        <select class="form-select" aria-label="Default select example" id="canbodangky" name="canbodangky" required>
+                                    
+                                        <?php
+                                        $sqlcanbodangky = "Select * from tb_chucvu where loaichucvu = 2";
+                                        $resultcanbodangky = mysqli_query($conn, $sqlcanbodangky);
+                                        if (mysqli_num_rows($resultcanbodangky)) {
+                                        while ($rowcanbodangky = mysqli_fetch_assoc($resultcanbodangky)) {
+                                        ?>
+                                            <?php
+                                        ?>
+                                            <option value="<?php echo $rowcanbodangky['ma_chucvu'] ?>"><?php echo $rowcanbodangky['hoten'] ?></option>
+                                        <?php
+                                        }
+                                        }
+                                        ?>
+                                        </select>
                                     </div>
-                                </div>
+                                    </div> 
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Trưởng công an huyện</label>
-                                    <input type="text" class="form-control" id="truongcongannotupdate" value="<?php echo $rowinfoshk['truongcongan'] ?>" aria-describedby="emailHelp" name="chucvunotupdate" required readonly>
+                                    <select class="form-select" aria-label="Default select example" id="truongcongan" name="truongcongan" required>
+                                    
+                                    <?php
+                                    $sqltruongcongan = "Select * from tb_chucvu where loaichucvu = 1";
+                                    $resulttruongcongan = mysqli_query($conn, $sqltruongcongan);
+                                    if (mysqli_num_rows($resulttruongcongan)) {
+                                        while ($rowtruongcongan = mysqli_fetch_assoc($resulttruongcongan)) {
+                                    ?>
+                                            <option value="<?php echo $rowtruongcongan['ma_chucvu'] ?>"><?php echo $rowtruongcongan['hoten'] ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="col-md me-1 mt-3">
+                                </div>
+                                <div class="col-md me-1 mt-3">
                                 
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Họ và tên</label>
-                                    <input type="text" class="form-control informationshkupdate" name="hotenupdate" value="<?php echo $rowinfoshk['hoten'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="hotenupdate" value="<?php echo $rowinfoshk['hoten'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Họ và tên khác</label>
-                                    <input type="text" class="form-control informationshkupdate" name="hotenkhacupdate" value="<?php echo $rowinfoshk['hovatenkhac'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="hotenkhacupdate" value="<?php echo $rowinfoshk['hotenkhac'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Quan hệ với chủ hộ</label>
-                                    <input type="text" class="form-control informationshkupdate" name="quanhechupdate" value="<?php echo $rowinfoshk['quanhech'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="quanhechupdate" value="<?php echo $rowinfoshk['quanhech'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="validationCustom02" class="form-label">Ngày sinh</label>
-                                    <input type="date" class="form-control informationshkupdate" name="ngaysinhupdate" id="validationCustom02" value="<?php echo isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : $BD['ngaysinh']?>" required>
+                                    <input type="date" class="form-control informationshkupdate" name="ngaysinhupdate" id="validationCustom02" value="<?php echo $rowinfoshk['ngaysinh'] ?>" required >
                                  </div>
                                  <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Giới tính</label>
-                                    <input type="text" class="form-control informationshkupdate" name="gioitinhupdate" value="<?php echo $rowinfoshk['gioitinh'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="gioitinhupdate" value="<?php echo $rowinfoshk['gioitinh'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Quê quán</label>
-                                    <input type="text" class="form-control informationshkupdate" name="nguyenquanupdate" value="<?php echo $rowinfoshk['nguyenquan'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="nguyenquanupdate" value="<?php echo $rowinfoshk['nguyenquan'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Dân tộc</label>
-                                    <input type="text" class="form-control informationshkupdate" name="dantocupdate" value="<?php echo $rowinfoshk['dantoc'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="dantocupdate" value="<?php echo $rowinfoshk['dantoc'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Tôn giáo</label>
-                                    <input type="text" class="form-control informationshkupdate" name="tongiaoupdate" value="<?php echo $rowinfoshk['tongiao'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="tongiaoupdate" value="<?php echo $rowinfoshk['tongiao'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Quốc tịch</label>
-                                    <input type="text" class="form-control informationshkupdate" name="quoctichupdate" value="<?php echo $rowinfoshk['quoctich'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="quoctichupdate" value="<?php echo $rowinfoshk['quoctich'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Nghề nghiệp </label>
-                                    <input type="text" class="form-control informationshkupdate" name="nghenghiepnoilamviecupdate" value="<?php echo $rowinfoshk['nghenghiepnoilamviec'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="nghenghiepnoilamviecupdate" value="<?php echo $rowinfoshk['nghenghiepnoilamviec'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="col-md me-1 mt-3">
                                     <label for="exampleInputEmail1" class="form-label fw-bold">Nơi thường trú trước đây</label>
-                                    <input type="text" class="form-control informationshkupdate" name="noithuongtrutruocdayupdate" value="<?php echo $rowinfoshk['noithuongtrutruocday'] ?>" aria-describedby="emailHelp" required readonly>
+                                    <input type="text" class="form-control informationshkupdate" name="noithuongtrutruocdayupdate" value="<?php echo $rowinfoshk['noithuongtrutruocday'] ?>" aria-describedby="emailHelp" required >
                                 </div>
                                 <div class="mt-3 d-flex justify-content-center">
-                                    <button class="btn btn-primary" type="submit" id="smUpdateshk" name="smUpdateshk" style="display: none;">Xác Nhận Sửa</button>
+                                    <button class="btn btn-primary" type="submit" id="smUpdateshk" name="smUpdateshk">Xác Nhận Sửa</button>
                                 </div>
+                            </div>
                             </div>
                         </form>
                     </div>
@@ -165,6 +152,7 @@ if (isset($_SESSION['LoginOK'])) {
 
     </html>
 <?php
+    }
 }
-ob_end_flush();
+
 ?>

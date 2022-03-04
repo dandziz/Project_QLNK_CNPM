@@ -11,7 +11,7 @@ if (isset($_SESSION['LoginOK'])) {
                 <h5 class="text-center mt-2">CÁN BỘ: NGUYỄN VĂN B</h5>
                 <div class="col-md-12 bg-secondary mt-3 ms-3 me-3">
                     <div>
-                        <button type="button" class="btn btn-primary mt-2">THÊM HỘ KHẨU</button>
+                        <button type="button" class="btn btn-primary mt-2"><a href="../themthanhvienshk.php">THÊM SỔ HỘ KHẨU</a></button>
                         <button type="button" class="btn btn-primary mt-2">HỘP THƯ</button>
                         <button type="button" class="btn btn-primary mt-2">CHUYỂN KHẨU</button>
                         <button type="button" class="btn btn-primary mt-2">TÁCH KHẨU</button>
@@ -46,7 +46,7 @@ if (isset($_SESSION['LoginOK'])) {
                                                 <img src="../images/background/2.png" class="card-img-top img-fluid" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Mã shk: <?php echo $ma_shk ?></h5>
-                                                    <a href="../shkinfomation.php?ma_shk=<?php echo $ma_shk ?>" class="card-link text-decoration-none">Xem Thông Tin SHK</a>
+                                                    <a href="shkmanage.php?mashk=<?php echo $ma_shk ?>" class="card-link text-decoration-none">Xem Thông Tin SHK</a>
                                                 </div>
                                                 
                                             </div>
