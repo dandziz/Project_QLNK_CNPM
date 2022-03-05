@@ -208,10 +208,10 @@ if (isset($_SESSION['LoginOK'])) {
                                             </div>
                                             <div class="d-flex mt-3 mb-3 justify-content-center">
                                                 <button type="button" class="btn btn-primary me-2" data-toggle="modal" data-target="#exampleModal">
-                                                    <a href="process-shk.php" class="text-white text-decoration-none">Sửa thông tin</a><br>
+                                                    <a href="process-shk.php?cccd=<?php echo $ch['cccd'] ?>" class="text-white text-decoration-none">Sửa thông tin</a><br>
                                                 </button>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                    <a href="" class="text-white text-decoration-none">Chuyển khẩu</a><br>
+                                                    <a href="process-chuyenkhau.php?cccd=<?php echo $ch['cccd'] ?>" class="text-white text-decoration-none">Chuyển khẩu</a><br>
                                                 </button>
                                             </div>
                                         </div>

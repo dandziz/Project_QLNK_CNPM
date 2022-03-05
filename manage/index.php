@@ -13,7 +13,7 @@ if (isset($_SESSION['LoginOK'])) {
                     <div>
                         <button type="button" class="btn btn-primary mt-2"><a href="../themthanhvienshk.php">THÊM SỔ HỘ KHẨU</a></button>
                         <button type="button" class="btn btn-primary mt-2">HỘP THƯ</button>
-                        <button type="button" class="btn btn-primary mt-2">CHUYỂN KHẨU</button>
+                        <button type="button" class="btn btn-primary mt-2"><a href="process-chuyenkhau.php">CHUYỂN KHẨU</a></button>
                         <button type="button" class="btn btn-primary mt-2">TÁCH KHẨU</button>
                     </div>
                     <div class="col-md-4 mt-2">
