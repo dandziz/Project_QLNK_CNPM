@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 01, 2022 lúc 07:30 PM
+-- Thời gian đã tạo: Th3 07, 2022 lúc 03:01 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -55,6 +55,7 @@ CREATE TABLE `tb_chitietshk` (
   `gioitinh` varchar(5) NOT NULL,
   `nguyenquan` varchar(200) NOT NULL,
   `dantoc` varchar(15) NOT NULL,
+  `tongiao` varchar(40) NOT NULL,
   `quoctich` varchar(30) NOT NULL,
   `nghenghiepnoilamviec` varchar(200) NOT NULL,
   `noithuongtrutruocday` varchar(200) NOT NULL,
@@ -67,8 +68,13 @@ CREATE TABLE `tb_chitietshk` (
 -- Đang đổ dữ liệu cho bảng `tb_chitietshk`
 --
 
-INSERT INTO `tb_chitietshk` (`ma_shk`, `cccd`, `chuho`, `quanhech`, `hoten`, `hotenkhac`, `ngaysinh`, `gioitinh`, `nguyenquan`, `dantoc`, `quoctich`, `nghenghiepnoilamviec`, `noithuongtrutruocday`, `canbodangky`, `truongcongan`, `tamvang`) VALUES
-('010827325', '001201023000', 1, '', 'Đào Văn A', '', '1992-02-01', 'Nam', 'Đội 5 - Thôn A - Xã B - Huyện C - Thành Phố Hà Nội', 'Kinh', 'Việt Nam', 'Nông dân', '', 2, 1, 0);
+INSERT INTO `tb_chitietshk` (`ma_shk`, `cccd`, `chuho`, `quanhech`, `hoten`, `hotenkhac`, `ngaysinh`, `gioitinh`, `nguyenquan`, `dantoc`, `tongiao`, `quoctich`, `nghenghiepnoilamviec`, `noithuongtrutruocday`, `canbodangky`, `truongcongan`, `tamvang`) VALUES
+('010827325', '001201023000', 1, '', 'Đào Văn C', '', '1992-02-01', 'Nam', 'Đội 5 - Thôn A - Xã B - Huyện C - Thành Phố Hà Nội', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0),
+('010827325', '001201023002', 0, 'Vợ', 'Nguyễn Thi N', '', '1994-03-01', 'Nữ', 'Phú Yên - Phú Xuyên - HN', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0),
+('01', '02392834', 1, '', 'Nguyễn Thị F', '', '2022-03-01', 'Nữ', 'HN', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0),
+('0000001', '028398912', 1, '', 'AF', '', '2022-03-05', 'Nam', 'B', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0),
+('0000001', '111111', 0, 'Con', 'Nguyễn Hoài C', '', '2022-03-02', 'Nữ', 'HN', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0),
+('010827325', '1111112', 0, 'Con', 'Nguyễn Hoài C', '', '2022-03-03', 'Nữ', 'HN', 'Kinh', 'Không', 'Việt Nam', 'Nông dân', '', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +96,8 @@ CREATE TABLE `tb_chucvu` (
 
 INSERT INTO `tb_chucvu` (`ma_chucvu`, `hoten`, `chucvu`, `loaichucvu`, `conlamviec`) VALUES
 (1, 'Nguyễn Văn B', 'Trưởng công an xã X', 1, 1),
-(2, 'Trần Hữu C', 'Công an xã', 2, 1);
+(2, 'Trần Hữu C', 'Công an xã', 2, 1),
+(3, 'Nguyễn Thị L', 'Công an xã', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -107,6 +114,13 @@ CREATE TABLE `tb_nguoidung` (
   `ngaykhoitao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `capbac` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_nguoidung`
+--
+
+INSERT INTO `tb_nguoidung` (`ma_nguoidung`, `taikhoan`, `matkhau`, `trangthai`, `chucvu`, `ngaykhoitao`, `capbac`) VALUES
+(1, 'nguyenvanb', '$2y$10$ZP0chrIq7NXcKcZ0RQwPC.vluWINiuR24YDiPswsNFPVMrxZ5HNHa', 1, 1, '2022-03-03 13:18:31', 2);
 
 -- --------------------------------------------------------
 
@@ -141,6 +155,8 @@ CREATE TABLE `tb_sohokhau` (
 --
 
 INSERT INTO `tb_sohokhau` (`ma_shk`, `hotenchuho`, `noithuongtru`, `ngaycap`, `truongcongan`, `thanhpho`) VALUES
+('0000001', 'A', 'B', '2022-03-04', 1, 'HN'),
+('01', 'Nguyễn Thị F', 'HN', '2022-03-06', 1, 'HN'),
 ('010827325', 'Đào Văn A', 'Đội 5 - Thôn A - Xã B - Huyện C - Thành Phố Hà Nội', '2022-01-01', 1, 'Hà Nội');
 
 -- --------------------------------------------------------
@@ -163,7 +179,8 @@ CREATE TABLE `tb_tamtru` (
   `lydo` varchar(300) NOT NULL,
   `email` varchar(30) NOT NULL,
   `xacnhan` tinyint(4) NOT NULL,
-  `trangthai` tinyint(4) NOT NULL
+  `trangthai` tinyint(4) NOT NULL,
+  `file` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -186,7 +203,8 @@ CREATE TABLE `tb_tamvang` (
   `lydo` varchar(300) NOT NULL,
   `email` varchar(30) NOT NULL,
   `xacnhan` tinyint(4) NOT NULL,
-  `trangthai` tinyint(4) NOT NULL
+  `trangthai` tinyint(4) NOT NULL,
+  `file` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -203,9 +221,10 @@ ALTER TABLE `tb_cauhoi`
 -- Chỉ mục cho bảng `tb_chitietshk`
 --
 ALTER TABLE `tb_chitietshk`
-  ADD PRIMARY KEY (`ma_shk`,`cccd`),
+  ADD PRIMARY KEY (`cccd`) USING BTREE,
   ADD KEY `canbodangky` (`canbodangky`),
-  ADD KEY `truongcongan` (`truongcongan`);
+  ADD KEY `truongcongan` (`truongcongan`),
+  ADD KEY `tb_chitietshk_ibfk_1` (`ma_shk`);
 
 --
 -- Chỉ mục cho bảng `tb_chucvu`
@@ -254,13 +273,13 @@ ALTER TABLE `tb_tamvang`
 -- AUTO_INCREMENT cho bảng `tb_chucvu`
 --
 ALTER TABLE `tb_chucvu`
-  MODIFY `ma_chucvu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ma_chucvu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_nguoidung`
 --
 ALTER TABLE `tb_nguoidung`
-  MODIFY `ma_nguoidung` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ma_nguoidung` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="./style/formKhaibao.css">
 </head>
 <body>
+    <?php
+        require "./partials-front/header.php"
+    ?>
     
-    <div class="main container">
-        <form action="" method="post" class="form mt-5" id="form-1">
+    <div class="main container" style="background-color: #f5f5f5;">
+        <form action="./process-khaibao.php" method="POST" class="form mt-5 ps-5 pe-5 pt-5 pb-5 container" id="form-1">
             <h3 class="heading text-center mb-5">HỒ SƠ ĐĂNG KÝ TẠM TRÚ</h3>
             <span class="note"><strong>Ghi chú: </strong>Các thông tin có dấu <span class="icon-required">(*)</span> là thông tin bắt buộc phải nhập</span>
 
@@ -23,7 +26,7 @@
                 <div class="form-group mb-5">
                     <label for="type" class="form-label">Thủ tục <span class="icon-required">(*)</span></label>
                     <select id="type" name="type" class="form-control">
-                      <option value="ThuongTru">Đăng ký thường trú</option>
+                      <option value="TamVang">Đăng ký tạm vắng</option>
                       <option value="TamTru">Đăng ký tạm trú</option>
                     </select>
                     <span class="form-message"></span>
@@ -33,17 +36,27 @@
                 <hr class="mb-3 line-space">
 
                 <div class="row">
-                    <div class="form-group mb-5">
+                    <div class="form-group mb-5 col-lg-12">
                         <label for="fullname" class="form-label">Họ và tên <span class="icon-required">(*)</span></label>
                         <input id="fullname" name="fullname" type="text" placeholder="VD: Bình Nguyễn" class="form-control">
                         <span class="form-message"></span>
                     </div>
-                    <div class="form-group col-lg-4 mb-4">
+                    <div class="form-group mb-5 col-lg-6">
+                        <label for="address" class="form-label">Địa chỉ thường trú <span class="icon-required">(*)</span></label>
+                        <input id="address" name="address" type="text" placeholder="Phường/Quận/TP..." class="form-control">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group mb-5 col-lg-6">
+                        <label for="address_now" class="form-label">Nơi ở hiện tại <span class="icon-required">(*)</span></label>
+                        <input id="address_now" name="address_now" type="text" placeholder="Phường/Quận/TP..." class="form-control">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group col-lg-6 mb-4">
                         <label for="birthday" class="form-label">Ngày sinh <span class="icon-required">(*)</span></label>
                         <input id="birthday" name="birthday" type="date" class="form-control">
                         <span class="form-message"></span>
                     </div>
-                    <div class="form-group col-lg-4 mb-4">
+                    <div class="form-group col-lg-6 mb-4">
                         <label for="gender" class="form-label">Giới tính <span class="icon-required">(*)</span></label>
                         <select id="gender" name="gender" class="form-control">
                           <option value="male">Giới tính: nam</option>
@@ -56,6 +69,17 @@
                         <input id="idcard" name="idcard" type="text" placeholder="" class="form-control">
                         <span class="form-message"></span>
                     </div>
+                    <div class="form-group col-lg-4 mb-4">
+                        <label for="idcard_address" class="form-label">Nơi cấp <span class="icon-required">(*)</span></label>
+                        <input id="idcard_address" name="idcard_address" type="text" placeholder="" class="form-control">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group col-lg-4 mb-4">
+                        <label for="idcard_date" class="form-label">Ngày cấp <span class="icon-required">(*)</span></label>
+                        <input id="idcard_date" name="idcard_date" type="date" class="form-control">
+                        <span class="form-message"></span>
+                    </div>   
+
                     <div class="form-group col-lg-6 mb-4">
                         <label for="number" class="form-label">Số điện thoại <span class="icon-required">(*)</span></label>
                         <input id="number" name="number" type="text" placeholder="VD: 09xxxxxxx" class="form-control">
@@ -76,40 +100,6 @@
                     <span class="form-message"></span>
                 </div>
 
-                <h5 class="heading-content mt-5">HỒ SƠ ĐÍNH KÈM</h5>
-                <hr class="mb-3 line-space">
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">STT</th>
-                        <th scope="col">Tên giấy tờ</th>
-                        <th scope="col">Tải file mẫu</th>
-                        <th scope="col">Đính kèm</th>
-                        <th scope="col">Ghi chú</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Tờ khai tạm trú</td>
-                        <td><i class="bi bi-arrow-down-circle"></i></td>
-                        <td><i class="bi bi-link-45deg">
-                            <input id="upload-form" name="upload-form" type="file">
-                        </i></td>
-                        <td><input type="text"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Tờ khai tạm vắng</td>
-                        <td><i class="bi bi-arrow-down-circle"></i></td>
-                        <td><i class="bi bi-link-45deg">
-                            <input id="upload-form" name="upload-form" type="file">
-                        </i></td>
-                        <td><input type="text"></td>
-                      </tr>
-                    </tbody>
-                </table>
-
                 <h5 class="heading-content mt-5">THÔNG TIN NHẬN THÔNG BÁO TÌNH TRẠNG HỒ SƠ</h5>
                 <hr class="mb-3 line-space">
 
@@ -117,8 +107,8 @@
                     <label for="feedback" class="form-label">Hình thức nhận <span class="icon-required">(*)</span></label>
                     <select id="feedback" name="feedback" class="form-control">
                       <option value="">-- Chọn hình thức nhận phản hồi --</option>
-                      <option value="online">Nhận qua cổng thông tin</option>
-                      <option value="offline">Nhận trực tiếp tại trụ sở cơ quan chức năng</option>
+                      <option value="Nhận qua cổng thông tin">Nhận qua cổng thông tin</option>
+                      <option value="Nhận trực tiếp tại trụ sở cơ quan chức năng">Nhận trực tiếp tại trụ sở cơ quan chức năng</option>
                     </select>
                     <span class="form-message"></span>
                 </div>
@@ -129,11 +119,15 @@
                     <span class="form-message"></span>
                 </div>
 
-                <button class="form-submit btn btn-primary">Ghi và gửi hồ sơ</button>
+                <button type="submit" class="form-submit btn btn-primary" name="btnSubmit" >Ghi và gửi hồ sơ</button>
 
             </div>
         </form>
     </div>
+
+    <?php
+        require "./partials-front/footer.php"
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./js/Validator.js"></script>
@@ -146,13 +140,17 @@
             rules: [
                 Validator.isRequired('#type','Vui lòng chọn loại hồ sơ'),
                 Validator.isRequired('#fullname','Vui lòng điền đầy đủ họ tên'),
+                Validator.isRequired('#address','Vui lòng điền đầy đủ địa chỉ'),
+                Validator.isRequired('#address_now','Vui lòng điền đầy đủ địa chỉ'),
                 Validator.isRequired('#birthday','Vui lòng chọn ngày sinh'),
                 Validator.isRequired('#gender','Vui lòng chọn giới tính'),
                 Validator.isRequired('#idcard','Vui lòng điền CCCD/CMND'),
+                Validator.isRequired('#idcard_address','Vui lòng điền trường này'),
+                Validator.isRequired('#idcard_date','Vui lòng điền trường này'),
                 Validator.isRequired('#feedback','Vui lòng chọn hình thức'),
                 Validator.isRequired('#confirm','Vui lòng xác nhận'),
                 Validator.isRequired('#number','Vui lòng điền số điên thoại'),
-                Validator.isEmail('email','Vui lòng nhập đúng email')
+                Validator.isEmail('#email','Vui lòng nhập đúng email')
             ]
         })
     </script>
