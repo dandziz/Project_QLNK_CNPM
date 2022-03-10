@@ -32,10 +32,10 @@ CREATE TABLE `tb_cauhoi` (
   `hoten` varchar(40) NOT NULL,
   `email` varchar(30) NOT NULL,
   `sdt` varchar(15) NOT NULL,
-  `lydo` varchar(300) NOT NULL,
+  `lydo` varchar(600) NOT NULL,
   `ngayhoi` date NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
-  `loaicauhoi` int(11) NOT NULL
+  `loaicauhoi` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -166,7 +166,7 @@ INSERT INTO `tb_sohokhau` (`ma_shk`, `hotenchuho`, `noithuongtru`, `ngaycap`, `t
 --
 
 CREATE TABLE `tb_tamtru` (
-  `ma_dontt` varchar(9) NOT NULL,
+  `ma_dontt` varchar(9) NOT NULL AUTO_INCREMENT,
   `conganxa` varchar(30) NOT NULL,
   `hoten` varchar(40) NOT NULL,
   `ngaysinh` date NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE `tb_tamtru` (
   `email` varchar(30) NOT NULL,
   `xacnhan` tinyint(4) NOT NULL,
   `trangthai` tinyint(4) NOT NULL,
-  `file` mediumblob NOT NULL
+  `phanhoi` varchar(100) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -190,7 +190,7 @@ CREATE TABLE `tb_tamtru` (
 --
 
 CREATE TABLE `tb_tamvang` (
-  `ma_dontv` varchar(9) NOT NULL,
+  `ma_dontv` varchar(9) NOT NULL AUTO_INCREMENT,
   `conganxa` varchar(30) NOT NULL,
   `hoten` varchar(40) NOT NULL,
   `ngaysinh` date NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE `tb_tamvang` (
   `email` varchar(30) NOT NULL,
   `xacnhan` tinyint(4) NOT NULL,
   `trangthai` tinyint(4) NOT NULL,
-  `file` mediumblob NOT NULL
+  `phanhoi` varchar(100) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

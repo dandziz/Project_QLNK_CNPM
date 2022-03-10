@@ -29,9 +29,12 @@
         $result = mysqli_query($conn,$sql);
 
         if($result) {
-            header("location: ChuyenKhau.php");
+            $message = 'true';
         }
-        
+        else {
+            $message = 'false';
+        }
+        header("location: ChuyenKhau.php?notice=$message")
     
 ?>
 

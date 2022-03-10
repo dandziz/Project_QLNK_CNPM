@@ -39,8 +39,12 @@
         $result = mysqli_query($conn,$sql);
 
         if($result) {
-            header("location: khaibaoOnline.php");
+            $message = 'true';
         }
+        else {
+            $message = 'false';
+        }
+        header("location: khaibaoOnline.php?notice=$message");
         
     
 ?>

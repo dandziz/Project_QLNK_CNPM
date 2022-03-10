@@ -99,5 +99,16 @@
             ]
         })
     </script>
+    <?php
+        if (isset($_GET['notice'])) {
+    ?>
+        <script>
+            var message;
+            var checkMessage = () => notice = <?php echo $_GET['notice'];?> ? message = 'Gửi hồ sơ thành công' : message = 'Đã xảy ra lỗi, vui lòng thử lại';
+            alert(checkMessage());
+        </script>
+    <?php
+        }
+    ?>
 </body>
 </html>

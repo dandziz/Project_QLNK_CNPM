@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <input id="confirm" name="confirm" type="checkbox" class="form-control">
+                    <input type="checkbox" name="confirm" id = "confirm">
                     <label for="confirm" class="form-label">Tôi xin chịu trách nhiệm trước pháp luật về lời khai trên</label>
                     <span class="form-message"></span>
                 </div>
@@ -129,7 +129,7 @@
         require "./partials-front/footer.php"
     ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></scri>
     <script src="./js/Validator.js"></script>
 
     <script>
@@ -150,9 +150,19 @@
                 Validator.isRequired('#feedback','Vui lòng chọn hình thức'),
                 Validator.isRequired('#confirm','Vui lòng xác nhận'),
                 Validator.isRequired('#number','Vui lòng điền số điên thoại'),
-                Validator.isEmail('#email','Vui lòng nhập đúng email')
             ]
         })
     </script>
+    <?php
+        if (isset($_GET['notice'])) {
+    ?>
+        <script>
+            var message;
+            var checkMessage = () => notice = <?php echo $_GET['notice'];?> ? message = 'Gửi hồ sơ thành công' : message = 'Đã xảy ra lỗi, vui lòng thử lại';
+            alert(checkMessage());
+        </script>
+    <?php
+        }
+    ?>
 </body>
 </html>
