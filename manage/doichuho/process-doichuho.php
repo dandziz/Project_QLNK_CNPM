@@ -12,6 +12,7 @@ if (!isset($_SESSION['LoginOK'])) {
         if(mysqli_query($conn, $sql)){
             $count++;
         }
+        $resultchuho = $ps->getCB($cccdnew, "cccd", "tb_chitietshk");
         $result = $ps->getALL($cccdnew, "cccd", "tb_chitietshk");
         $row = $result[0];
         $resultall = $ps->getALL($row['ma_shk'], "ma_shk", "tb_chitietshk");
@@ -25,7 +26,10 @@ if (!isset($_SESSION['LoginOK'])) {
                 }
             }
         }
+        
         if(count($resultall)==$count){
+            $sql = "Update tb_sohokhau set hotenchuho = '{$resultchuho['hoten']}' where ma_shk = '{$resultchuho['ma_shk']}'";
+            mysqli_query($conn, $sql);
             $done = "Thay đổi chủ hộ hoàn tất!";
             header("location: ../shkmanage.php?mashk={$row['ma_shk']}&done=$done");
         }

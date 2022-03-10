@@ -72,6 +72,7 @@ if (isset($_SESSION['LoginOK'])) {
                     <div class="row" id="allshk">
                         <?php
                         $result = $ps->getALLElements('tb_sohokhau');
+                        if($result!=false){
                         for($i = 0; $i < count($result); $i++){
                             $row = $result[$i];
                         ?>
@@ -85,6 +86,7 @@ if (isset($_SESSION['LoginOK'])) {
                             </div>
                         </div>
                         <?php
+                        }
                         }
                         ?>
                     </div>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +49,6 @@
     </header>
     <?php
     if (isset($_POST['tracuu'])) {
-        session_start();
         include("model.php");
         $mashk = $_POST['mashk'];
         $ps = new Process();

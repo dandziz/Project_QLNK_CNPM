@@ -18,6 +18,9 @@
                 $error="Mật khẩu không chính xác!";
                 header("location: login.php?error=$error");
             }
+        }else{
+            $error="Tài khoản không tồn tại!";
+            header("location: login.php?error=$error");
         }
     }else{
         header("location: index.php");

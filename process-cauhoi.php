@@ -29,8 +29,8 @@ if(isset($_POST['btnSubmit'])){
         $targetDir = "uploads/";
         $temp = explode(".", $_FILES["file"]["name"]);
         $extension = end($temp);
-        if(count($temp)==2){        
-        $fileName = $temp[0].$sdt.date('d').date('m').date('Y').'.'.$temp[1];
+        if(count($temp)>=2){        
+        $fileName = "GiayChuyenHoKhau".$sdt.date('d').date('m').date('Y').'.'.end($temp);
         $targetFilePath = $targetDir . $fileName;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         if(!empty($_FILES["file"]["name"])){

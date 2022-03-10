@@ -42,6 +42,10 @@ if (!isset($_SESSION['LoginOK'])) {
             $result = mysqli_query($conn, $sql);
             $rowinfoshk = mysqli_fetch_assoc($result);
             $ma_shk = $rowinfoshk['ma_shk'];
+            if($rowinfoshk['chuho']==1){
+                $sql = "Update tb_sohokhau set hotenchuho = '{$hoten}' where ma_shk = '{$rowinfoshk['ma_shk']}'";
+            }
+            mysqli_query($conn, $sql);
             $done = "Sửa thành công!";
             header("location: ../shkmanage.php?mashk=$ma_shk&done=$done");
         }else{
