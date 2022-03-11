@@ -2,6 +2,9 @@
 require "./partials-front/header.php";
 if (!isset($_SESSION['LoginOK'])) {
 ?>
+<head>
+    <title>Đăng nhập</title>
+</head>
     <main style="padding: 150px;" id="body-index">
         <div class="col-md-8 ms-auto me-auto bg-white rounded p-3" style="width:200px">
             <div class="mt-2 mb-2">

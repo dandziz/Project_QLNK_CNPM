@@ -18,7 +18,7 @@ if (!isset($_SESSION['LoginOK'])) {
 ?>
 
         <head>
-            <title>Thành viên</title>
+            <title>Chuyển khẩu</title>
         </head>
         <div class="container" style="margin-top: 72px;">
             <div class="mt-2 mb-2">

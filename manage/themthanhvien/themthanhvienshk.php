@@ -9,6 +9,9 @@ if (isset($_SESSION['LoginOK'])) {
         $resultcb = $ps->getALL("2", "loaichucvu", "tb_chucvu");
         include('../partials-front/header.php');
 ?>
+<head>
+    <title>Thêm thành viên</title>
+</head>
         <main>
             <div class="container mb-5">
                 <div class="mt-2 mb-2">

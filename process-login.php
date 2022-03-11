@@ -3,7 +3,7 @@
     if (isset($_POST["btnsignin"])) {
         $user = $_POST['taikhoan'];
         $password = $_POST['password'];
-        $sql = "Select* from tb_nguoidung where taikhoan = '{$user}'";
+        $sql = "Select* from conganxa where taikhoan = '{$user}'";
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
             $row = mysqli_fetch_assoc($result);
@@ -11,7 +11,7 @@
                 if($row['capbac']==1){
 
                 }else{
-                    $_SESSION['LoginOK'] = '2'.$row['ma_nguoidung'];
+                    $_SESSION['LoginOK'] = '2'.$row['ma_conganxa'];
                     header("location: manage/index.php");
                 }
             }else{

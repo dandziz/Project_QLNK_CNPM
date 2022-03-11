@@ -17,6 +17,9 @@ if (!isset($_SESSION['LoginOK'])) {
             }
         }
 ?>
+<head>
+    <title>Đổi chủ hộ khẩu</title>
+</head>
         <main>
             <div class="container">
                 <div class="row">

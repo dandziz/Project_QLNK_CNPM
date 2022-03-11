@@ -7,6 +7,9 @@ if (isset($_SESSION['LoginOK'])) {
     $resultca = $ps->getALL("1","loaichucvu","tb_chucvu");
     $resultcb = $ps->getALL("2","loaichucvu","tb_chucvu");
 ?>
+<head>
+    <title>Tạo sổ hộ khẩu</title>
+</head>
     <main style="background-color: #fafafa;" class="container rounded mt-3 mb-5">
         <div class="col-md-2">
             <a href="../index.php" class="text-decoration-none btn btn-primary"><i class="bi bi-arrow-left"></i> Quay Lại</a>

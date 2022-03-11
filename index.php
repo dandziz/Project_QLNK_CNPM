@@ -1,6 +1,9 @@
 <?php
 require "./partials-front/header.php";
 ?>
+<head>
+    <title>Trang chủ</title>
+</head>
 <main style="padding-bottom: 100px;" id="body-index">
     <div class="container">
         <div class="pt-3">
