@@ -165,10 +165,10 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <div class="col-md-1">
-                        <input id="confirm" name="confirm" type="checkbox" class="form-control">
+                    <div class="col-md-12">
+                        <input id="confirm" name="confirm" type="checkbox" class="">
+                        Tôi xin chịu trách nhiệm trước pháp luật về lời khai trên
                     </div>
-                    <label for="confirm" class="form-label">Tôi xin chịu trách nhiệm trước pháp luật về lời khai trên</label>
                     <span class="form-message"></span>
                 </div>
 
