@@ -6,7 +6,7 @@ $(document).ready(function(){
             let form_datas = new FormData();
             form_datas.append('madon',madon);
             $.ajax({
-                url: 'tmp-taixuong.php', // gửi đến file upload.php 
+                url: 'views/ThuTuc/tmp-taixuong.php', // gửi đến file upload.php 
                 dataType: 'text',
                 cache: false,
                 contentType: false,

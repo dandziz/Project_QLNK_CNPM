@@ -42,3 +42,6 @@ h1,h2,h3,h4,h5,h6{
 .icon-required {
     color: red;
 }
+.background-fff{
+    background-color: #fafafa;
+}
