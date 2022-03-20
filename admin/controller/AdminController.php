@@ -24,23 +24,22 @@ class AdminController{
         $error = '';
         if(isset($_POST['submit'])){
             $hoten = $_POST['hoten'];
-           
+            $taikhoan = $_POST['taikhoan'];
+            $matkhau = $_POST['matkhau'];
             $chucvu = $_POST['chucvu'];
-            $conlamviec = $_POST['conlamviec'];
-            $ngaykhoitao = $_POST['ngaykhoitao'];
-            $capbac = $_POST['capbac'];
-            if(empty($hoten) || empty($_POST['chucvu'])|| empty($conlamviec) || empty($ngaykhoitao) || empty($capbac)){
+            $conlamviec = 1;
+            $password = password_hash($matkhau, PASSWORD_DEFAULT);
+            if(empty($hoten) ||  empty($taikhoan) || empty($matkhau) || empty($chucvu) || empty($conlamviec) ){
                 $error = 'Thông tin chưa đầy đủ!';
             }else{
         
                 $bdModal = new AdminModal();
                 $bdArr = [
                     'hoten' => $hoten,
+                    'taikhoan' => $taikhoan,
+                    'matkhau' => $password,
                     'chucvu' => $chucvu,
                     'conlamviec' => $conlamviec,
-                    'ngaykhoitao' => $ngaykhoitao,
-                    'capbac' => $capbac,
-                    
                 ];
                 $isAdd = $bdModal->insert($bdArr);
                 if ($isAdd) {
@@ -49,7 +48,7 @@ class AdminController{
                 else {
                     $TT= "Thêm mới thất bại";
                 }
-                header("Location: index.php?controller=adminca&action=user&tt=$TT");
+                header("location: index.php?controller=admin&action=admin&tt=$TT");
                 exit();
             }
 
@@ -68,23 +67,24 @@ class AdminController{
         $error = '';
         if (isset($_POST['submit'])) {
             $hoten = $_POST['hoten'];
-           
             $chucvu = $_POST['chucvu'];
             $conlamviec = $_POST['conlamviec'];
-            $ngaykhoitao = $_POST['ngaykhoitao'];
-            $capbac = $_POST['capbac'];
-            if(empty($hoten) || empty($_POST['chucvu'])|| empty($conlamviec) || empty($ngaykhoitao) || empty($capbac)){
+            $taikhoan = $_POST['taikhoan'];
+            $matkhau = $_POST['matkhau'];
+            $password = password_hash($matkhau, PASSWORD_DEFAULT);
+            if(empty($hoten) || empty($chucvu) || empty($conlamviec) || empty($taikhoan) || empty($matkhau)){
                 $error = 'Thông tin chưa đầy đủ!';
             }
             else {
                 
                 //xử lý update dữ liệu vào hệ thống
                 $bdArr = [
+                    'ma_taikhoan' => $ma_taikhoan,
                     'hoten' => $hoten,
                     'chucvu' => $chucvu,
                     'conlamviec' => $conlamviec,
-                    'ngaykhoitao' => $ngaykhoitao,
-                    'capbac' => $capbac,
+                    'taikhoan' => $taikhoan,
+                    'matkhau' => $password,
                     
                 ];
                 $isAdd = $bdModal->update($bdArr);
@@ -95,16 +95,16 @@ class AdminController{
                 else {
                     $TT = "Sửa thất bại";
                 }
-                header("Location: index.php?controller=adminca&action=user&tt=$TT");
+                header("Location: index.php?controller=admin&action=admin&tt=$TT");
                 exit();
             }
         }
         require_once 'view/AdminCA/editAdmin.php';
     }
     function delete(){
-        $ma_taikhoan = $_GET['ma_taikhoan'];
+        $ma_taikhoan = $_GET['mataikhoan'];
         if (!is_numeric($ma_taikhoan)) {
-            header("Location: index.php?controller=admin&action=index");
+            header("Location: index.php?controller=admin&action=admin");
             exit();
         }
         $bdModal = new AdminModal();
@@ -117,7 +117,7 @@ class AdminController{
             //báo lỗi
             $TT = "Xóa tài khoản thất bại";
         }
-        header("Location: index.php?controller=adminca&action=admin&tt=$TT");
+        header("Location: index.php?controller=admin&action=admin&tt=$TT");
         exit();
     }
 }

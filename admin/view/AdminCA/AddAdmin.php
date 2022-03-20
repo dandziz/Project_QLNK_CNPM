@@ -27,10 +27,6 @@ require 'view/template/header.php'
                         <label for="validationCustom02" class="form-label">Chức vụ</label>
                         <input type="text" class="form-control" name="chucvu" id="validationCustom02" value="" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="validationCustom02" class="form-label">Còn làm việc</label>
-                        <input type="text" class="form-control" name="conlamviec" id="validationCustom02" value="" required>
-                    </div>
                     <div class="col-12">
                         <button class="btn btn-primary" name="submit" type="submit">Lưu</button>
                     </div>

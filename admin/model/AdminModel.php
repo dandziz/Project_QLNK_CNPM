@@ -3,11 +3,11 @@ require_once '../config/config.php';
 class AdminModal{
     private $ma_taikhoan;
     private $taikhoan;
+    private $matkhau;
     private $hoten;
     private $chucvu;
     private $conlamviec;
-    private $ngaykhoitao;
-    private $capbac;
+    
     public function getAllBD(){
         $conn = $this->connectDb();
         $sql = "SELECT * FROM tb_taikhoan";
@@ -21,11 +21,11 @@ class AdminModal{
     public function insert($param = []) {
         $connection = $this->connectDb();
         //tạo và thực thi truy vấn
-        $queryInsert = "INSERT INTO tb_taikhoan (taikhoan, hoten, chucvu, conlamviec, ngaykhoitao, capbac)
-        VALUES ('{$param['taikhoan']}', '{$param['hoten']}', '{$param['chucvu']}', '{$param['conlamviec']}', '{$param['ngaykhoitao']}', '{$param['capbac']}')";
+        $queryInsert = "INSERT INTO tb_taikhoan (taikhoan, matkhau, hoten, chucvu, conlamviec, capbac)
+        VALUES ('{$param['taikhoan']}', '{$param['matkhau']}', '{$param['hoten']}', '{$param['chucvu']}', '{$param['conlamviec']}', 2)";
         $isInsert = mysqli_query($connection, $queryInsert);
         $this->closeDb($connection);
-
+    
         return $isInsert;
     }
     public function connectDb() {
@@ -55,16 +55,16 @@ class AdminModal{
     public function update($bd = []) {
         $connection = $this->connectDb();
         $queryUpdate = "UPDATE tb_taikhoan 
-        SET hoten = '{$bd['hoten']}', chucvu = '{$bd['chucvu']}', conlamviec = '{$bd['conlamviec']}', ngaykhoitao = '{$bd['ngaykhoitao']}', capbac = '{$bd['capbac']}'  WHERE ma_taikhoan = {$bd['ma_taikhoan']}";
+        SET hoten = '{$bd['hoten']}', chucvu = '{$bd['chucvu']}', conlamviec = '{$bd['conlamviec']}', taikhoan = '{$bd['taikhoan']}', matkhau = '{$bd['matkhau']}'  WHERE ma_taikhoan = {$bd['ma_taikhoan']}";
         $isUpdate = mysqli_query($connection, $queryUpdate);
         $this->closeDb($connection);
 
         return $isUpdate;
     }
-    public function delete($id = null) {
+    public function delete($ma_taikhoan = null) {
         $connection = $this->connectDb();
 
-        $queryDelete = "DELETE FROM tb_taikhoan WHERE ma_taikoan = {$ma_taikhoan}";
+        $queryDelete = "DELETE FROM tb_taikhoan WHERE ma_taikhoan = {$ma_taikhoan}";
         $isDelete = mysqli_query($connection, $queryDelete);
 
         $this->closeDb($connection);

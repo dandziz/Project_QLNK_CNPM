@@ -28,9 +28,24 @@ require 'view/template/header.php'
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Còn làm việc</label>
-                        <input type="text" class="form-control" name="conlamviec" id="validationCustom02" value="<?php echo isset($_POST['conlamviec']) ? $_POST['conlamviec'] : $BD['conlamviec']?>" required>
+                        <select class="form-select" name="conlamviec" aria-label="Default select example">
+                            <?php
+                                $check = isset($_POST['conlamviec']) ? $_POST['conlamviec'] : $BD['conlamviec'];
+                                if($check = 1){
+                            ?>
+                            <option value="1" selected>Còn</option>
+                            <option value="0">Không</option>
+                            <?php
+                                }else{
+                                    ?>
+                                    <option value="1">Còn</option>
+                                    <option value="0" selected>Không</option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
                     </div>
-                    
+                        
                     <div class="col-12">
                         <button class="btn btn-primary" name="submit" type="submit">Lưu</button>
                     </div>
