@@ -151,10 +151,15 @@
                 </div>
 
                 <div class="form-group mb-5">
+<<<<<<< HEAD:views/ThuTuc/khaiBaoOnline.php
                     <div class="col-md-1">
                         <input id="confirm" name="confirm" type="checkbox" class="form-control" required>
+=======
+                    <div class="col-md-12">
+                        <input id="confirm" name="confirm" type="checkbox" class="">
+                        Tôi xin chịu trách nhiệm trước pháp luật về lời khai trên
+>>>>>>> 743565649389d859b4b9af64465661f754931e92:khaibaoOnline.php
                     </div>
-                    <label for="confirm" class="form-label">Tôi xin chịu trách nhiệm trước pháp luật về lời khai trên</label>
                     <span class="form-message"></span>
                 </div>
 
