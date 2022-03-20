@@ -12,12 +12,17 @@ class DangNhapController{
                 'user' => $user,
                 'pass' => $pass
             ];
-            $result = $model->dangNhap($DN);
+            $result = $model->dangNhapCAX($DN);
             if($result==true){
                 $_SESSION['LoginOK'] = '2.'.$user;
                 header("location: index.php?controller=CongAnXa&action=index");
             }else{
-                header("location: index.php");
+                $result = $model->dangNhapAdmin($DN);
+                if($result==true){
+                    $_SESSION['LoginAdmin'] = '1.'.$user;
+                    header("location: index.php?controller=Admin&action=index");
+                }
+                // header("location: index.php");
             }
         }
         require_once("views/DangNhap/login.php");
@@ -25,6 +30,10 @@ class DangNhapController{
     function dangxuat(){
         if(isset($_SESSION['LoginOK'])){
             unset($_SESSION['LoginOK']);
+            header('location: index.php');
+        }
+        if(isset($_SESSION['LoginAdmin'])){
+            unset($_SESSION['LoginAdmin']);
             header('location: index.php');
         }
     }

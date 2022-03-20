@@ -1,0 +1,55 @@
+/* css chung */
+a{
+    text-decoration: none;
+}
+
+
+/* css header admin */
+.menu {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline;
+    padding: 2%;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    line-height: 45px;
+    color: rgb(228, 228, 228);
+    font-size: 24px;
+}
+
+.menu ul li a:hover {
+    color: #fff;
+}
+
+/* css Dashboard */
+.col-4 {
+    width: 18%;
+    background-color: rgb(88, 88, 88);
+    margin: 1%;
+    padding: 2%;
+    text-align: center;  
+    min-height: 120px;
+    color: #fff; 
+}
+
+.wrapper-col-4 {
+    display: flex;
+    justify-content: space-between;
+}
