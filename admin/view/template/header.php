@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/admin.css">
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script src="js/scriptAdmin.js"></script>
+    <link rel="stylesheet" href="../../BTL/style/admin.css">
+    <link rel="stylesheet" href="../../BTL/style/style.css">
 </head>
 
 <body>
@@ -23,8 +22,8 @@
         <div class="menu bg-success">
             <div class="wrapper">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="user.php">Người quản lý</a></li>
+                    <li><a href="index.php?controller=Admin&action=index">Home</a></li>
+                    <li><a href="index.php?controller=Admin&action=admin">Người quản lý</a></li>
                     <li><a href="logout.php">Đăng xuất</a></li>
                 </ul>
             </div>
