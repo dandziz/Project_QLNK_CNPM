@@ -68,7 +68,7 @@ class ThuTucController{
             $other = $_POST['other'];
             $feedback = $_POST['feedback'];
             $conganxa = "Phú Yên";
-            $Tamtru = [
+            $TamVang = [
                 'madon' => $madon,
                 'type' => $type,
                 'conganxa' => $conganxa,
@@ -83,11 +83,11 @@ class ThuTucController{
                 'other' => $other,
                 'feedback' => $feedback
             ];
-            $isAddTT = $model->insertTT($Tamtru);
+            $isAddTT = $model->insertTV($TamVang);
             if($isAddTT){
                 $success = "Gửi thủ tục thành công. Hãy check Email của bạn để kiểm tra!";
                 $subject = "[Xã Phú Yên] Thủ tục tạm trú của bạn đã được gửi đi!";
-                $body = "Việc thực hiện tạo thủ tục tạm trú trực tuyến của bạn đã hoàn tất và chờ được xác nhận. Mã đơn của bạn là: ".$madon.". Xem thông tin chi tiết về thủ tục <a href='http://localhost/BTL_MVC_QLNK/taixuong.php?madon={$madon}'>tại đây.</a>";
+                $body = "Việc thực hiện tạo thủ tục tạm trú trực tuyến của bạn đã hoàn tất và chờ được xác nhận. Mã đơn của bạn là: ".$madon.". Xem thông tin chi tiết về thủ tục <a href='http://localhost/BTL_MVC_QLNK/index.php?controller=ThuTuc&action=TaiXuong'>tại đây.</a>";
                 sendemailforAccount($email, $subject, $body);
                 require_once 'views/ThuTuc/khaiBaoOnline.php';
             }else{

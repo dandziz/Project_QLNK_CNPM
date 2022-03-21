@@ -15,6 +15,7 @@ require("views/partials-front/header.php")
                     <div>
                         <a href="index.php?controller=CongAnXa&action=themhokhau"><button type="button" class="btn btn-primary mt-2">THÊM HỘ KHẨU</button></a>
                         <a href="index.php?controller=PhanHoi&action=homthu"><button type="button" class="btn btn-primary mt-2">HÒM THƯ</button></a>
+                        <a href="index.php?controller=PhanHoiThuTuc&action=index"><button type="button" class="btn btn-primary mt-2">THỦ TỤC</button></a>
                     </div>
                     <div class="col-md-4 mt-2">
                         <form class="flex-row">

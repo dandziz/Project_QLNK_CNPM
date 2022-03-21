@@ -18,5 +18,6 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/scriptHome.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>

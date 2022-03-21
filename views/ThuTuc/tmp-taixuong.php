@@ -28,8 +28,10 @@ if ($_POST['madon']) {
             if($resultTT['xacnhan']==1){
                 $xacnhan = "Đã xác nhận";
                 $ngaybatdau = $ps->getDate($resultTT['ngaybatdau']);
-            }else{
+            }else if($resultTT['xacnhan']==0){
                 $xacnhan = "Đang chờ phê duyệt";
+            }else{
+                $xacnhan = "Đã bị từ chối!";
             }
         }else{
             $don = "tạm vắng";
@@ -48,8 +50,10 @@ if ($_POST['madon']) {
             if($resultTV['xacnhan']==1){
                 $xacnhan = "Đã xác nhận";
                 $ngaybatdau = $ps->getDate($resultTV['ngaybatdau']);
-            }else{
+            }else if($resultTV['xacnhan']==0){
                 $xacnhan = "Đang chờ phê duyệt";
+            }else{
+                $xacnhan = "Đã bị từ chối!";
             }
         }
 ?>
