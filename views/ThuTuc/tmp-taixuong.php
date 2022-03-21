@@ -95,7 +95,7 @@ if ($_POST['madon']) {
             <span class="fw-bold fs-6">TRẠNG THÁI: </span><span class="fw-bold fs-6"><?php echo $xacnhan ?></span>
         </div>
         <?php
-        if($xacnhan=="Đã xác nhận"){
+        if($xacnhan=="Đã xác nhận" && $phanhoi == "Nhận qua cổng thông tin"){
             $link = "#";
             if(!file_exists("../../tailieu/template".$madon.".docx")){
                 require_once("xuattailieu.php");

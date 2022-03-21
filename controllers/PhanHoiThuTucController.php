@@ -29,7 +29,7 @@ if(isset($_SESSION['LoginOK'])){
                             <th><?php echo $row['cccd'] ?></th>
                             <th><?php echo $row['diachithuongtru'] ?></th>
                             <th><?php echo $row['phanhoi'] ?></th>
-                            <td><a href="pheDuyet-chitiet.php?id=${response.ma_dontt}&type=${value}">Xem chi tiết</a></td>   
+                            <td><a href="index.php?controller=phanhoithutuc&action=chitiet&id=<?php echo $row['ma_dontt'] ?>&type=tamtru">Xem chi tiết</a></td>   
                         </tr>
                         <?php
                     }
@@ -47,7 +47,7 @@ if(isset($_SESSION['LoginOK'])){
                             <th><?php echo $row['cccd'] ?></th>
                             <th><?php echo $row['diachithuongtru'] ?></th>
                             <th><?php echo $row['phanhoi'] ?></th>
-                            <td><a href="pheDuyet-chitiet.php?id=${response.ma_dontt}&type=${value}">Xem chi tiết</a></td>   
+                            <td><a href="index.php?controller=phanhoithutuc&action=chitiet&id=<?php echo $row['ma_dontv'] ?>&type=tamvang">Xem chi tiết</a></td>   
                         </tr>
                         <?php
                     }
@@ -85,19 +85,34 @@ if(isset($_SESSION['LoginOK'])){
                 $pheduyet = $_POST['pheduyet'];
                 $ma_taikhoan = $_POST['mataikhoan'];
                 $type = $_POST['type'];
-                // echo $id.' '.$email.' '.$title.' '.$content.' '.$pheduyet.' '.$ma_taikhoan;
+                $ngaybatdau = date("Y-m-d");
+                echo $id.' '.$email.' '.$title.' '.$content.' '.$pheduyet.' '.$ma_taikhoan;
                 if($pheduyet=="yes"){
                     $xacnhan = 1;
                 }else{
                     $xacnhan = 2;
                 }
-                $pd = [
-                    'matt' => $id,
-                    'xacnhan' => $xacnhan,
-                    'ma_taikhoan' => $ma_taikhoan
-                ];
+                if($xacnhan==1){
+                    $pd = [
+                        'matt' => $id,
+                        'xacnhan' => $xacnhan,
+                        'ma_taikhoan' => $ma_taikhoan,
+                        'ngaybatdau' => $ngaybatdau
+                    ];
+                }else{
+                    $pd = [
+                        'matt' => $id,
+                        'xacnhan' => $xacnhan,
+                        'ma_taikhoan' => $ma_taikhoan
+                    ];
+                }
+                echo $pd['ngaybatdau'];
                 if($type=="Thủ tục tạm vắng"){
-                    $isTV = $model->processTV($pd);
+                    if($xacnhan==1){
+                        $isTV = $model->processTVDONE($pd);
+                    }else{
+                        $isTV = $model->processTVHUY($pd);
+                    }
                     if($isTV){
                         $subject = $title;
                         $body = $content;
@@ -109,7 +124,11 @@ if(isset($_SESSION['LoginOK'])){
                         header("location: index.php?controller=PhanHoiThuTuc&action=index&done=$done");
                     }
                 }else{
-                    $isTT = $model->processTT($pd);
+                    if($xacnhan==1){
+                        $isTT = $model->processTTDONE($pd);
+                    }else{
+                        $isTT = $model->processTTHUY($pd);
+                    }
                     if($isTT){
                         $subject = $title;
                         $body = $content;

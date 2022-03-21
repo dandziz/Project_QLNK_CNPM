@@ -31,10 +31,6 @@ require("views/partials-front/header.php")
                     <option value="tamvang">Thủ tục tạm vắng</option>
                 </select>
 
-                <div class="btn_wrap mt-5 pt-2 d-flex" style="justify-content: center">
-                    <button id="submit" class="btn btn-success text-center">Tìm kiếm thủ tục</button>
-                </div>
-
                 <div class="infor-table mt-5">
                     <table class="table">
                         <thead>
