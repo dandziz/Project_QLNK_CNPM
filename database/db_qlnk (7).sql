@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 20, 2022 lúc 05:23 PM
+-- Thời gian đã tạo: Th3 21, 2022 lúc 05:09 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -146,7 +146,7 @@ CREATE TABLE `tamtru` (
   `ngaybatdau` date NOT NULL,
   `lydo` varchar(300) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `xacnhan` tinyint(4) NOT NULL,
+  `xacnhan` int(11) NOT NULL,
   `phanhoi` varchar(100) NOT NULL,
   `ma_taikhoan` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -156,8 +156,8 @@ CREATE TABLE `tamtru` (
 --
 
 INSERT INTO `tamtru` (`ma_dontt`, `conganxa`, `hoten`, `ngaysinh`, `cccd`, `cccd_noicap`, `cccd_capngay`, `diachithuongtru`, `choohiennay`, `ngaybatdau`, `lydo`, `email`, `xacnhan`, `phanhoi`, `ma_taikhoan`) VALUES
-('6C40A317F', 'Phú Yên', 'Đào Duy Đán', '2022-03-17', '001201023000', 'Công an huyện Phú Xuyên', '2022-03-17', 'HN', '20 Khương Thượng - Đống Đa - TP Hà Nội', '2022-03-18', 'Thích', 'daodan2612@gmail.com', 1, 'Nhận qua cổng thông tin', NULL),
-('796A3E8A9', 'Phú Yên', 'Đào Duy Đán', '2022-03-17', '001201023000', 'Công an huyện Phú Xuyên', '2022-03-17', 'HN', '20 Khương Thượng - Đống Đa - TP Hà Nội', '0000-00-00', 'Tôi muốn đi xa', 'daodan2001@gmail.com', 0, 'Nhận qua cổng thông tin', NULL);
+('25F37673E', 'Phú Yên', 'Đào Duy Đán', '2022-03-21', '001201023000', 'Công an huyện Phú Xuyên', '2022-03-22', 'HN', '20 Khương Thượng - Đống Đa - TP Hà Nội', '0000-00-00', 'Thích', 'daodan2612@gmail.com', 0, 'Nhận qua cổng thông tin', NULL),
+('796A3E8A9', 'Phú Yên', 'Đào Duy Đán', '2022-03-17', '001201023000', 'Công an huyện Phú Xuyên', '2022-03-17', 'HN', '20 Khương Thượng - Đống Đa - TP Hà Nội', '0000-00-00', 'Tôi muốn đi xa', 'daodan2001@gmail.com', 0, 'Nhận qua cổng thông tin', 1);
 
 -- --------------------------------------------------------
 
@@ -182,6 +182,13 @@ CREATE TABLE `tamvang` (
   `phanhoi` varchar(100) NOT NULL,
   `ma_taikhoan` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tamvang`
+--
+
+INSERT INTO `tamvang` (`ma_dontv`, `conganxa`, `hoten`, `ngaysinh`, `cccd`, `cccd_noicap`, `cccd_capngay`, `diachithuongtru`, `choohiennay`, `ngaybatdau`, `lydo`, `email`, `xacnhan`, `phanhoi`, `ma_taikhoan`) VALUES
+('0D7DF4993', 'Phú Yên', 'Đào Duy Đán', '2022-03-21', '001201023000', 'Công an huyện Phú Xuyên', '2022-03-22', 'HN', '20 Khương Thượng - Đống Đa - TP Hà Nội', '0000-00-00', 'Thích', 'daodan2612@gmail.com', 0, 'Nhận qua cổng thông tin', NULL);
 
 -- --------------------------------------------------------
 
